@@ -25,7 +25,9 @@
 @import url(./blocks/card/__delete-button/card__delete-button.css);
 @import url(./blocks/card/__info/card__info.css);
 @import url(./blocks/card/__title/card__title.css);
+@import url(./blocks/card/__like-container/card__like-container.css);
 @import url(./blocks/card/__like-button/card__like-button.css);
+@import url(./blocks/card/__like-counter/card__like-counter.css);
 @import url(./blocks/card/__like-button/_active/card__like-button_active.css);
 /* блок footer */
 @import url(./blocks/footer/footer.css);
@@ -47,3 +49,5 @@
 @import url(./blocks/figure/figure.css);
 @import url(./blocks/figure/__image/figure__image.css);
 @import url(./blocks/figure/__title/figure__title.css);
+@import url(./blocks/popup/_type/popup_type_delete.css);
+@import url(./blocks/popup/_type/popup_type_avatar.css);

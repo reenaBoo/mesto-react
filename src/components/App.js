@@ -3,12 +3,18 @@ import Header from './Header';
 import Main from './Main';
 import PopupWithForm from './PopupWithForm';
 import Footer from './Footer';
-import Card from './Card'
+import ImagePopup from './ImagePopup';
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
+
+  const [selectedCard, setSelectedCard] = useState({})
+
+  function handleCardClick(card) {
+    setSelectedCard(card)
+  }
 
   function handleEditProfileClick() {
     setIsEditProfilePopupOpen(true)
@@ -26,6 +32,7 @@ function App() {
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
     setIsEditAvatarPopupOpen(false);
+    setSelectedCard({});
   }
 
   function handlePopupClose(evt) {
@@ -38,7 +45,7 @@ function App() {
     <body className="page">
       <div className="page__container">
         <Header />
-        <Main onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} onEditAvatar={handleEditAvatarClick} />
+        <Main onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} onEditAvatar={handleEditAvatarClick} onCardClick={handleCardClick} />
         <Footer />
 
         <ImagePopup card={selectedCard} onClose={handlePopupClose} />
@@ -61,29 +68,7 @@ function App() {
           <input id="link-input" className="form__input form__input_type_url" type="url" name="avatar" placeholder="Ссылка на новую аватарку" required />
           <span className="link-input-error form__input-error"></span>
         </PopupWithForm>
-
-        <div className="popup popup_type_delete">
-          <div className="popup__container">
-            <button className="popup__close-button" type="button" aria-label="Закрыть"></button>
-            <form className="form">
-              <h2 className="form__title">Вы уверены?</h2>
-              <button className="form__save-button" type="submit">Да</button>
-            </form>
-          </div>
-        </div>
-
-
-        <div className="popup popup_type_image">
-          <div className="popup__container-image">
-            <button className="popup__close-button" type="button" aria-label="Закрыть"></button>
-            <figure className="figure">
-              <img src="#" alt="#" className="figure__image" />
-              <figcaption className="figure__title"></figcaption>
-            </figure>
-          </div>
-        </div>
       </div>
-      <script type="module" src="./scripts/index.js"></script>
     </body>
   );
 }

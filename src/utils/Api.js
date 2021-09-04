@@ -19,13 +19,13 @@ class Api {
       .then(this._checkStatus)
   }
 
-  postNewCard(name, link) {
+  postNewCard(card) {
     return fetch(`${this._url}/cards`, {
       method: 'POST',
       headers: this._headers,
       body: JSON.stringify({
-        name: name,
-        link: link
+        name: card.name,
+        link: card.link
       })
     })
       .then(this._checkStatus)
@@ -52,14 +52,13 @@ class Api {
   }
 
   editUserAvatar(avatar) {
+    console.log(avatar)
     return fetch(`${this._url}/users/me/avatar`, {
       method: 'PATCH',
       headers: this._headers,
-      body: JSON.stringify({
-        avatar
-      })
+      body: JSON.stringify(avatar)
     })
-      .then(this._checkStatus)
+      .then(this._checkStatus) 
   }
 
   changeLikeCardStatus(cardId, isLiked) {

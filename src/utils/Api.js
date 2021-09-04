@@ -39,13 +39,13 @@ class Api {
       .then(this._checkStatus)
   }
 
-  editUserInfo(name, about) {
+  editUserInfo(profile) {
     return fetch(`${this._url}/users/me`, {
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
-        name: name,
-        about: about
+        name: profile.name,
+        about: profile.about
       })
     })
       .then(this._checkStatus)
@@ -56,23 +56,15 @@ class Api {
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
-        avatar: avatar
+        avatar
       })
     })
       .then(this._checkStatus)
   }
 
-  likeCard(cardId) {
+  changeLikeCardStatus(cardId, isLiked) {
     return fetch(`${this._url}/cards/likes/${cardId}`, {
-      method: 'PUT',
-      headers: this._headers
-    })
-      .then(this._checkStatus)
-  }
-
-  deleteLike(cardId) {
-    return fetch(`${this._url}/cards/likes/${cardId}`, {
-      method: 'DELETE',
+      method: `${isLiked ? 'DELETE' : 'PUT'}`,
       headers: this._headers
     })
       .then(this._checkStatus)
